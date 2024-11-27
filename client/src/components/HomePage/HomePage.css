@@ -1,0 +1,55 @@
+.home{
+    margin: 0;
+    text-align: center;
+}
+h2{
+    margin: 4rem auto 2rem;
+    font-size: 300%;
+}
+h5{
+    font-size: 110%;
+}
+.features{
+    text-align: center;
+    margin: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+.attr1{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+.attr2{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+.icon{
+    height: 3rem;
+    width: 3rem;
+}
+.btn{
+    margin: 2rem auto 1rem;
+    height: 3rem;
+    width: auto;
+    padding: 0 1.75rem;
+    border-radius: 5px;
+    border: 1px;
+    background-color: #101010;
+    color: #D0D0D0;
+    font-family: "Roboto Mono", monospace;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 110%;
+    transition: border-radius 0.4s ease, background-color 0.4s ease;
+}
+.btn:hover{
+    background-color: #222222;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+.results{
+    margin: 0 auto 3rem;
+}

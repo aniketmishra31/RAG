@@ -19,11 +19,13 @@ export const signup = async (req: Request, res: Response) => {
         const hash = await hashPassword(reqBody.password);
         reqBody.password = hash;
         const user = new User(reqBody);
-        await user.save();
+        const savedUser=await user.save();
+        if(!savedUser)
+            throw {status: 500,message: "Could not save the user"};
         const token = createToken(reqBody.email);
         if (!token)
             throw { status: 500, message: "No token created" };
-        res.status(201).json({ accessToken: token, message: "user saved successfully" });
+        res.status(201).json({ accessToken: token,user_id: savedUser.id});
     } catch (err: any) {
         res
             .status(err.status || 500)
@@ -44,7 +46,7 @@ export const login = async (req: Request, res: Response) => {
         const token = createToken(user.email);
         if (!token)
             throw { status: 500, message: "No token created" };
-        res.status(200).json({ accessToken: token });
+        res.status(200).json({ accessToken: token,user_id: user.id });
     } catch (err: any) {
         res
             .status(err.status || 500)

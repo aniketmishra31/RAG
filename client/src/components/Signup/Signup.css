@@ -1,0 +1,90 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signup {
+    background-color: #101010;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 3rem;
+    border-radius: 10px;
+}
+
+.input-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 170%
+}
+
+.signup form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+input{
+    color: #D0D0D0;
+}
+input[type="submit"] {
+    height: 3rem;
+    width: auto;
+    padding: 0 1.5rem;
+    border-radius: 5px;
+    border: 1px;
+    background-color: #222222;
+    color: #D0D0D0;
+    font-family: "Roboto Mono", monospace;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 110%;
+    transition: border-radius 0.4s ease, background-color 0.4s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #101010;
+    cursor: pointer;
+    border-radius: 25px;
+}
+input[type="email"]{
+    height: 1.5rem;
+    padding: 0 0.5rem;
+    font-family: "Roboto Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #101010;
+    border: 1px solid #D0D0D0;
+    border-radius: 5px;
+    caret-color:#D0D0D0;
+}
+input[type="password"]{
+    height: 1.5rem;
+    padding: 0 0.5rem;
+    font-family: "Roboto Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #101010;
+    border: 1px solid #D0D0D0;
+    border-radius: 5px;
+    caret-color:#D0D0D0;
+}
+input[type="text"]{
+    height: 1.5rem;
+    padding: 0 0.5rem;
+    font-family: "Roboto Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #101010;
+    border: 1px solid #D0D0D0;
+    border-radius: 5px;
+    caret-color:#D0D0D0;
+}
+h4{
+    margin: 0;
+    font-size: 200%;
+    margin-bottom: 0;
+}
