@@ -42,7 +42,6 @@ const Signup = () => {
                 return res.json();
             })
             .then((data: ResponseType) => {
-                console.log(data);
                 setUserId(data.user_id);
                 localStorage.setItem("accessToken",data.accessToken);
                 navigate("/profile");

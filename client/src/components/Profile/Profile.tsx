@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../hooks/useAuth";
 import { BASE_URL } from "../../main";
+import "./Profile.css";
+import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Navbar from "../Navbar/Navbar";
 
 interface User {
     name: string;
     email: string;
     username: string;
 }
+
 const Profile = () => {
-    const { userId } = useAuth();
     const [user, setUser] = useState<User | undefined>(undefined);
+
     useEffect(() => {
-        fetch(`${BASE_URL}/user/${userId}`, {
+        fetch(`${BASE_URL}/user`, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
@@ -19,26 +23,41 @@ const Profile = () => {
             }
         })
             .then(res => {
-                if (!res.ok)
-                    throw Error("Could not get user");
+                if (!res.ok) throw new Error("Could not get user");
                 return res.json();
             })
-            .then((data: User) => {
-                setUser(data);
+            .then((data: any) => {
+                setUser(data.user);
             })
-    }, [userId]);
+            .catch((err) => {
+                console.error(err);
+            });
+    }, []);
+
     return (
         <>
-            {
-                user &&
-                <div>
-                    <h2>{user.name}</h2>
-                    <p>{user.email}</p>
-                    <p>{user.username}</p>
-                </div>
-            }
+            <Navbar />
+            {user ?
+                (
+                    <>
+                        <div className="header">
+                            <h2>Welcome {user.name}!</h2>
+                        </div>
+                        <div className="content">
+                            <div className="files">
+                                <h5>Files</h5>
+                            </div>
+                            <button className="btn upload">
+                                <FontAwesomeIcon className="upload-icon" icon={faPlus} />
+                                Upload PDF
+                            </button>
+                        </div>
+                    </>
+                ) : (
+                    <p>Loading user profile...</p>
+                )}
         </>
     );
-}
+};
 
 export default Profile;

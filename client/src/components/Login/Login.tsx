@@ -35,7 +35,6 @@ const Login = () => {
                 return res.json();
             })
             .then((data: ResponseType) => {
-                // console.log(data);
                 localStorage.setItem("accessToken", data.accessToken);
                 setUserId(data.user_id);
                 navigate("/profile");
