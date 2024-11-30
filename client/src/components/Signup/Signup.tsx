@@ -1,13 +1,13 @@
 import "./Signup.css";
 import React, { useState } from "react";
-import { ResponseType } from "../../types/ResponseType";
+import { ResponseType } from "../../types/Types";
 import { useAuth } from "../../hooks/useAuth";
-import { BASE_URL } from "../../main";
+import { BASE_URL } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-    const {setUserId} = useAuth();
-    const navigate=useNavigate();
+    const { setUserId } = useAuth();
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -43,7 +43,7 @@ const Signup = () => {
             })
             .then((data: ResponseType) => {
                 setUserId(data.user_id);
-                localStorage.setItem("accessToken",data.accessToken);
+                localStorage.setItem("accessToken", data.accessToken);
                 navigate("/profile");
             })
             .catch((err) => {

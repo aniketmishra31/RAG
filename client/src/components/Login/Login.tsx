@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../main";
+import { BASE_URL } from "../../utils/constants";
 import { useState } from "react";
-import { ResponseType } from "../../types/ResponseType";
+import { ResponseType } from "../../types/Types";
 import { useAuth } from "../../hooks/useAuth";
 import "./Login.css";
 const Login = () => {

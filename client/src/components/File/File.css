@@ -1,0 +1,21 @@
+.file{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    width: 20vw;
+    margin: 2rem;
+    border: 2px solid #d0d0d0;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+.file h5{
+    margin-bottom: 0.5rem;
+}
+.file p{
+    size: 50%;
+}
+.file :hover{
+    cursor: pointer;
+}

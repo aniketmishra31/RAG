@@ -1,17 +1,7 @@
-.header{
+.profile{
     text-align: center;
 }
-h2{
-    margin: 3rem auto;
-}
-.upload{
+.files{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem auto;
-}
-.content{
-    display: flex;
-    justify-content: space-around;
     margin: auto 3rem;
 }
