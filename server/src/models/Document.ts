@@ -39,9 +39,9 @@ export class Document {
                 .select("*")
                 .eq("id", doc_id)
                 .single();
-            if(error)
+            if (error)
                 throw error;
-            if(!data)
+            if (!data)
                 return undefined;
             return data as DocumentConstructor & { id: string };
         } catch (err: any) {
@@ -57,6 +57,21 @@ export class Document {
             if (error)
                 throw error;
             return true;
+        } catch (err: any) {
+            throw err;
+        }
+    }
+    static async getPdfId(doc_id: string): Promise<string | undefined> {
+        try {
+            const { data, error } = await db
+                .from("embeddings")
+                .select("metadata")
+                .eq("document_id", doc_id);
+            if (error)
+                throw error;
+            if (!data)
+                return undefined;
+            return data[0].metadata as string;
         } catch (err: any) {
             throw err;
         }

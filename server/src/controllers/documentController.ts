@@ -67,3 +67,25 @@ export const generateApiKey = async (req: Request & {
             .json(err.message || err);
     }
 }
+export const getPdf = async (req: Request &
+{
+    user?: {
+        user_id: string;
+    }
+}
+    , res: Response
+) => {
+    try {
+        if (!req.user)
+            throw { status: 401, message: "Unauthorized" };
+        const { id } = req.params;
+        const pdf_id = await Document.getPdfId(id);
+        if (!pdf_id)
+            throw { status: 404, message: "No pdf embeddings with the pdf_id found" };
+        res.status(200).json({ pdf_id: pdf_id });
+    } catch (err: any) {
+        res
+            .status(err.status || 500)
+            .json(err.message || err);
+    }
+}
