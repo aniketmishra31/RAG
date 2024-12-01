@@ -2,12 +2,17 @@ import "./HomePage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClone, faDatabase, faUpload, faMagnifyingGlass, faFileLines } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 import Navbar from "../Navbar/Navbar";
 
 const HomePage = () => {
     const navigate = useNavigate();
+    const { userId } = useAuth();
     const handleClick = () => {
-        navigate("/login");
+        if (userId)
+            navigate("/profile");
+        else
+            navigate("/login");
     }
     return (
         <>

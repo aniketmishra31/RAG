@@ -1,15 +1,25 @@
+import { Link } from "react-router-dom";
 import "./Navbar.css";
+import { useAuth } from "../../hooks/useAuth";
 const Navbar = () => {
-    return (  
+    const { userId, setUserId } = useAuth();
+    const handleLogout = () => {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("ref_id");
+        setUserId(undefined);
+    }
+    return (
         <nav>
             <a className="brand" href="/">Ask PDF</a>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/">About</a></li>
-                <li><a href="/">Contact</a></li>
+                <li><Link to="/" >Home</Link></li>
+                {userId && <li><Link to="/profile">Profile</Link></li>}
+                <li><Link to="/">About</Link></li>
+                {!userId && <li><Link to="/">Contact</Link></li>}
+                {userId && <li><Link to="/" onClick={handleLogout}>Logout</Link></li>}
             </ul>
         </nav>
     );
 }
- 
+
 export default Navbar;

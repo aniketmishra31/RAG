@@ -6,6 +6,7 @@ interface Props {
 }
 const Modal: React.FC<Props> = ({ text, onClose }) => {
     const [reveal, setReveal] = useState(false);
+    const [copyText, setCopyText] = useState("Copy");
     const pRef = useRef<HTMLParagraphElement>(null);
     const toggle = () => {
         setReveal(!reveal);
@@ -20,10 +21,10 @@ const Modal: React.FC<Props> = ({ text, onClose }) => {
         if (pRef.current) {
             navigator.clipboard.writeText(pRef.current.textContent || '')
                 .then(() => {
-                    alert('Text copied to clipboard!');
+                    setCopyText("Copied");
                 })
                 .catch((error) => {
-                    console.error('Failed to copy text: ', error);
+                    alert(`Error while copying text: ${error}`);
                 });
         }
     }
@@ -34,7 +35,7 @@ const Modal: React.FC<Props> = ({ text, onClose }) => {
                     <h5>Api Key: </h5>
                     <p ref={pRef}>{showText(text)}</p>
                     <button className="btn reveal" onClick={toggle}>{reveal ? "Hide" : "Reveal"}</button>
-                    {reveal && <button className="btn reveal" onClick={handleCopyClick}>Copy</button>}
+                    {reveal && <button className="btn reveal" onClick={handleCopyClick}>{copyText}</button>}
                 </div>
             </div>
             <button onClick={onClose} className="btn">Close</button>
