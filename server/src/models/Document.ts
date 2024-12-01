@@ -32,4 +32,33 @@ export class Document {
             throw err;
         }
     }
+    static async getDocumentByID(doc_id: string): Promise<DocumentConstructor & { id: string } | undefined> {
+        try {
+            const { data, error } = await db
+                .from("documents")
+                .select("*")
+                .eq("id", doc_id)
+                .single();
+            if(error)
+                throw error;
+            if(!data)
+                return undefined;
+            return data as DocumentConstructor & { id: string };
+        } catch (err: any) {
+            throw err;
+        }
+    }
+    static async updateApiKey(doc_id: string, newApiKey: string): Promise<boolean> {
+        try {
+            const { error } = await db
+                .from("documents")
+                .update({ api_key: newApiKey })
+                .eq("id", doc_id);
+            if (error)
+                throw error;
+            return true;
+        } catch (err: any) {
+            throw err;
+        }
+    }
 }

@@ -65,7 +65,7 @@ const Profile = () => {
                                 docs ?
                                     (
                                         docs.map(doc =>
-                                            <File title={doc.title} text={doc.text} />
+                                            <File title={doc.title} text={doc.text} id={doc.id}/>
                                         )
                                     ) : (
                                         <p>Loading...</p>

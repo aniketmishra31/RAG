@@ -6,6 +6,7 @@ import Signup from "./components/Signup/Signup";
 import Profile from "./components/Profile/Profile";
 import FileUpload from "./components/FileUpload/FileUpload";
 import "./App.css";
+import ChatDocument from "./components/ChatDocument/ChatDocument";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/upload-new" element={<FileUpload />} />
+            <Route path="/profile/chat/:id" element={<ChatDocument />} />
           </Routes>
         </Router>
       </AuthProvider>

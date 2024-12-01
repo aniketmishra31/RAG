@@ -8,6 +8,7 @@ export interface User {
     username: string;
 }
 export interface Document {
+    id: string;
     text: string;
     user_id: string;
     api_key: string;
