@@ -6,8 +6,14 @@ import documentRouter from "./routes/documentRouter";
 dotenv.config();
 
 const app = express();
+app.use(cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-apiKey"],
+    credentials: true
+}));
+
 app.use(express.json());
-app.use(cors());
 
 app.use("/api", authRouter);
 app.use("/api", documentRouter)
