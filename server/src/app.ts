@@ -14,7 +14,7 @@ app.use(cors({
 }));
 app.options("*", cors({
     origin: true,
-    methods: ["GET", "PUT", "POST", "PATCH", "DELETE"],
+    methods: ["GET", "PUT", "POST", "PATCH", "DELETE","OPTIONS"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization", "X-apiKey"]
 }));
