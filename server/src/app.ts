@@ -7,11 +7,14 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
+    // origin: "https://rag-liard.vercel.app",
     origin: "*",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-apiKey"],
     exposedHeaders: ["Content-Type", "Authorization", "X-apiKey"],
-    credentials: true
+    // credentials: true,
 }));
+
 
 app.use(express.json());
 
